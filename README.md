@@ -2,6 +2,7 @@
 
 A magical, sparkling birthday website built for the wonderful **Ann** — featuring floating particles, a live countdown clock, interactive cake, a full music player, polaroid gallery, and confetti bursts.
 
+## ACCESS LINK: https://jack-ki1.github.io/ANN_BIRTHDAY/
 ---
 
 ## 📁 Project Structure
