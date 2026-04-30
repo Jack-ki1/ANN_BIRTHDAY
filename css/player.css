@@ -1,0 +1,182 @@
+/* ═══════════════════════════════════════════
+   ann-birthday / css/player.css
+   Music player styles
+   ═══════════════════════════════════════════ */
+
+/* ─── NOW PLAYING BAR ────────────────────── */
+.now-playing-bar {
+  max-width: 580px;
+  margin: 0 auto 1.2rem;
+  background: rgba(255,255,255,0.1);
+  backdrop-filter: blur(30px);
+  border-radius: 20px;
+  padding: 1.2rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border: 1px solid rgba(255,178,207,0.25);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+  flex-wrap: wrap;
+}
+
+.np-artwork {
+  width: 52px; height: 52px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, var(--rose), var(--deep));
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.6rem;
+  flex-shrink: 0;
+  animation: np-spin 8s linear infinite paused;
+  box-shadow: 0 4px 15px rgba(255,78,142,0.4);
+}
+.np-artwork.playing {
+  animation-play-state: running;
+}
+@keyframes np-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.np-info {
+  flex: 1;
+  min-width: 100px;
+  text-align: left;
+}
+.np-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1rem;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.np-artist {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  font-style: italic;
+  color: rgba(255,178,207,0.7);
+}
+
+.np-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.np-btn {
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,178,207,0.25);
+  color: #fff;
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+.np-btn:hover {
+  background: rgba(255,78,142,0.3);
+  border-color: var(--rose);
+  transform: scale(1.1);
+}
+.np-play {
+  width: 46px; height: 46px;
+  background: linear-gradient(135deg, var(--rose), var(--deep));
+  border: none;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 15px rgba(255,78,142,0.4);
+}
+.np-play:hover {
+  background: linear-gradient(135deg, #ff6ba3, #a01f5a);
+  transform: scale(1.12);
+}
+
+.np-volume {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: rgba(255,255,255,0.6);
+}
+.np-volume input[type="range"] {
+  -webkit-appearance: none;
+  width: 80px; height: 4px;
+  border-radius: 4px;
+  background: rgba(255,178,207,0.3);
+  outline: none;
+  cursor: pointer;
+}
+.np-volume input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: var(--rose);
+  box-shadow: 0 0 6px rgba(255,78,142,0.5);
+  cursor: pointer;
+}
+
+/* ─── PROGRESS BAR ───────────────────────── */
+.progress-wrap {
+  max-width: 580px;
+  margin: 0 auto 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+.prog-time {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.82rem;
+  color: rgba(255,178,207,0.6);
+  flex-shrink: 0;
+  width: 32px;
+}
+.progress-bar {
+  flex: 1;
+  height: 6px;
+  background: rgba(255,178,207,0.2);
+  border-radius: 6px;
+  position: relative;
+  cursor: pointer;
+  overflow: visible;
+}
+.progress-bar:hover .progress-thumb {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+.progress-fill {
+  height: 100%;
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--rose), var(--lavender));
+  width: 0%;
+  transition: width 0.25s linear;
+  pointer-events: none;
+}
+.progress-thumb {
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  background: #fff;
+  border: 2px solid var(--rose);
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  transition: opacity 0.2s, transform 0.2s;
+  pointer-events: none;
+  box-shadow: 0 0 8px rgba(255,78,142,0.6);
+}
+
+/* ─── NO AUDIO NOTICE ────────────────────── */
+.no-audio-notice {
+  background: rgba(255,78,142,0.12);
+  border: 1px solid rgba(255,78,142,0.25);
+  border-radius: 12px;
+  padding: 1rem 1.5rem;
+  max-width: 580px;
+  margin: 0 auto 1.5rem;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  color: rgba(255,178,207,0.75);
+  display: none; /* shown by JS if no audio files found */
+}
